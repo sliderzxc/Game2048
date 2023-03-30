@@ -43,6 +43,7 @@ public class TileBoard : MonoBehaviour
     {
         if (!waiting)
         {
+            #region desktop
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
                 Move(Vector2Int.up, 0, 1, 1, 1);
             } else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
@@ -52,6 +53,19 @@ public class TileBoard : MonoBehaviour
             } else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
                 Move(Vector2Int.right, grid.width - 2, -1, 0, 1);
             }
+            #endregion
+
+            #region mobile
+            if (SwipeController.swipeUp == true) {
+                Move(Vector2Int.up, 0, 1, 1, 1);
+            } else if (SwipeController.swipeLeft == true) {
+                Move(Vector2Int.left, 1, 1, 0, 1);
+            } else if (SwipeController.swipeDown == true) {
+                Move(Vector2Int.down, 0, 1, grid.height - 2, -1);
+            } else if (SwipeController.swipeRight == true) {
+                Move(Vector2Int.right, grid.width - 2, -1, 0, 1);
+            }
+            #endregion
         }
     }
 
